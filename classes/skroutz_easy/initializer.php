@@ -9,7 +9,7 @@
  * Copyright: 2015 Panagiotis Vagenas
  */
 
-namespace SkroutzEasy;
+namespace skroutz_easy;
 
 
 class initializer extends \xd_v141226_dev\initializer {

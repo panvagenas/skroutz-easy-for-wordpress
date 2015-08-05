@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/* @var \SkroutzEasy\menu_pages\panels\main_settings $callee */
+/* @var \skroutz_easy\menu_pages\panels\main_settings $callee */
 /* @var \xd_v141226_dev\views $this */
 
 echo 'main settings';

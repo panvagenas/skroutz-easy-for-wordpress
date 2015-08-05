@@ -60,11 +60,11 @@ Kudos: WebSharks™ http://www.websharks-inc.com
 
 -- end section for WordPress®. --------------------------------------------------------------------------------------------------------- */
 
-namespace SkroutzEasy {
+namespace skroutz_easy {
 
 	if ( ! defined( 'WPINC' ) ) {
 		die;
 	}
 
-	require_once dirname( __FILE__ ) . '/classes/SkroutzEasy/framework.php';
+	require_once dirname( __FILE__ ) . '/classes/skroutz_easy/framework.php';
 }

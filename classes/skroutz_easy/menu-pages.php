@@ -9,7 +9,7 @@
  * Copyright: 2015 Panagiotis Vagenas
  */
 
-namespace SkroutzEasy;
+namespace skroutz_easy;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * Class menu_pages
- * @package SkroutzEasy
+ * @package skroutz_easy
  * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @since TODO ${VERSION}
  */

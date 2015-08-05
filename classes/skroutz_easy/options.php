@@ -9,7 +9,7 @@
  * Copyright: 2015 Panagiotis Vagenas
  */
 
-namespace SkroutzEasy;
+namespace skroutz_easy;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;

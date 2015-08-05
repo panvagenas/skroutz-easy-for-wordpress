@@ -9,15 +9,16 @@
  * Copyright: 2015 Panagiotis Vagenas
  */
 
-namespace SkroutzEasy;
+namespace skroutz_easy;
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+require_once dirname( dirname( dirname( __FILE__ ) ) ) . '/core/stub.php';
 
 /**
  * Class framework
- * @package SkroutzEasy
+ * @package skroutz_easy
  * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @since TODO ${VERSION}
  *
