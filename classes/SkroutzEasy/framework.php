@@ -11,7 +11,7 @@
 
 namespace SkroutzEasy;
 
-if (!defined('WPINC')) {
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
@@ -21,14 +21,16 @@ if (!defined('WPINC')) {
  * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
  * @since TODO ${VERSION}
  *
- * @property skroutz_easy   $©skroutz_easy
- * @property skroutz_easy   ©skroutz_easy()
+ * @property skroutz_easy $©skroutz_easy
+ * @method skroutz_easy ©skroutz_easy()
+ *
+ * @property request $©request
+ * @method request ©request()
  */
-class framework extends  \xd__framework{
-
+class framework extends \xd__framework {
 }
 
-$GLOBALS[__NAMESPACE__] = new framework(
+$GLOBALS[ __NAMESPACE__ ] = new framework(
 	array(
 		'plugin_root_ns' => __NAMESPACE__, // The root namespace
 		'plugin_var_ns'  => 'ske',
@@ -36,6 +38,6 @@ $GLOBALS[__NAMESPACE__] = new framework(
 		'plugin_name'    => 'Skroutz Easy',
 		'plugin_version' => '150804',
 		'plugin_site'    => 'https://github.com/panvagenas/skroutz-easy-for-wordpress',
-		'plugin_dir'     => dirname(dirname(dirname(__FILE__))) // Your plugin directory.
+		'plugin_dir'     => dirname( dirname( dirname( __FILE__ ) ) ) // Your plugin directory.
 	)
 );
