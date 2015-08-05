@@ -37,4 +37,21 @@ class skroutz_easy extends framework{
 	public function getRedirectUrl(){
 		return $this->©url->to_wp_site_uri($this->redirect_uri);
 	}
+
+
+	/**
+	 * @return string
+	 * @throws \xd_v141226_dev\exception
+	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+	 * @since TODO ${VERSION}
+	 */
+	public function getAuthorizationUrl() {
+		$query     = http_build_query( array(
+			'client_id'     => $this->©option->get( 'client_id' ),
+			'redirect_uri'  => $this->getRedirectUrl(),
+			'response_type' => 'code',
+			'scope'         => 'easy',
+		) );
+		return $this->©request->baseUrl . $this->©request->authorizationUri . '?' . $query;
+	}
 }

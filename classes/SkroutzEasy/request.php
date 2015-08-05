@@ -12,11 +12,10 @@
 namespace SkroutzEasy;
 
 
-class request extends framework{
+class request extends framework {
 	protected $client_id;
 	protected $client_secret;
-	protected $redirect_uri;
-	protected $postData = array();
+	protected $postData = null;
 
 	protected $baseUrl = 'https://www.skroutz.gr/';
 	protected $authorizationUri = 'oauth2/authorizations/new';
@@ -50,6 +49,7 @@ class request extends framework{
 	 * @since TODO ${VERSION}
 	 */
 	public function makeOAuthCall( $data = array() ) {
+		$this->reset();
 		$this->postData = array_merge( $this->getOAuthPostDataArray(), $data );
 		$this->headers  = array();
 		$this->url      = $this->baseUrl . $this->tokenUri;
@@ -64,17 +64,31 @@ class request extends framework{
 	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
 	 * @since TODO ${VERSION}
 	 */
-	public function getAccessToken($code){
+	public function getAccessToken( $code ) {
+		$this->reset();
 		$this->postData = array(
-			'code'          => $code,
 			'client_id'     => $this->client_id,
 			'client_secret' => $this->client_secret,
 			'redirect_uri'  => $this->getRedirectUrl(),
-			'grant_type'    => 'authorization_code'
+			'grant_type'    => 'authorization_code',
+			'code'          => $code,
 		);
 
-		$this->url= $this->baseUrl . $this->tokenUri;
-		$this->headers  = array();
+		$this->url = $this->baseUrl . $this->tokenUri;
+
+		return $this->makeCall();
+	}
+
+	/**
+	 * @param $accessToken
+	 *
+	 * @return array|mixed
+	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
+	 * @since TODO ${VERSION}
+	 */
+	public function getAddress( $accessToken ) {
+		$this->reset();
+		$this->url = $this->baseUrl . $this->addressUri . '?oauth_token=' . urlencode( $accessToken );
 
 		return $this->makeCall();
 	}
@@ -84,13 +98,13 @@ class request extends framework{
 	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
 	 * @since TODO ${VERSION}
 	 */
-	public function makeCall(){
+	protected function makeCall() {
 		$args = array( 'headers' => $this->headers, 'return_array' => true );
 
 		$res = $this->©url->remote( $this->url, $this->postData, $args );
 
 		$header = wp_remote_retrieve_headers( $res );
-		$json = json_decode( wp_remote_retrieve_body( $res ) );
+		$json   = json_decode( wp_remote_retrieve_body( $res ) );
 
 		return $json;
 	}
@@ -102,7 +116,7 @@ class request extends framework{
 	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
 	 * @since TODO ${VERSION}
 	 */
-	public function setAPIRequestHeaders($accessToken) {
+	protected function setAPIRequestHeaders( $accessToken ) {
 		$this->headers = array(
 			'Accept'        => 'application/vnd.skroutz+json; version=3',
 			'Authorization' => 'Bearer ' . $accessToken
@@ -131,20 +145,22 @@ class request extends framework{
 	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
 	 * @since TODO ${VERSION}
 	 */
-	public function getRedirectUrl(){
+	public function getRedirectUrl() {
 		return $this->©skroutz_easy->getRedirectUrl();
 	}
 
 	/**
+	 * @return $this
 	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
 	 * @since TODO ${VERSION}
 	 */
-	public function getAuthorizationUrl(){
-		$query = http_build_query(array(
-			'client_id' => $this->client_id,
-			'redirect_uri' => $this->getRedirectUrl(),
-			'response_type' => 'code'
-		));
-		$this->url = $this->baseUrl . $this->authorizationUri . '?' . $query;
+	public function reset() {
+		$this->headers    = array();
+		$this->postData   = null;
+		$this->scope      = 'easy';
+		$this->url        = '';
+		$this->grant_type = 'client_credentials';
+
+		return $this;
 	}
 }
