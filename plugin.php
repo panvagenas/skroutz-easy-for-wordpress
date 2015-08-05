@@ -66,5 +66,5 @@ namespace skroutz_easy {
 		die;
 	}
 
-	require_once dirname( __FILE__ ) . '/classes/skroutz_easy/framework.php';
+	require_once dirname( __FILE__ ) . '/classes/skroutz-easy/framework.php';
 }

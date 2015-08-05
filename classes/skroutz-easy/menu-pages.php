@@ -33,9 +33,7 @@ class menu_pages extends \xd_v141226_dev\menu_pages {
 	 * @return null Nothing.
 	 */
 	public function admin_menu() {
-		$this->add_options_page(
-			$this->©menu_pages__settings
-		);
+		$this->add_options_page('settings');
 	}
 
 	/**
@@ -53,16 +51,5 @@ class menu_pages extends \xd_v141226_dev\menu_pages {
 		 * No global preferences so display admin menu
 		 */
 		$this->admin_menu();
-	}
-
-	/**
-	 * Default (core-driven) menu pages.
-	 *
-	 * @return array Default (core-driven) menu pages.
-	 *
-	 * @see add() for further details about how to add menu pages.
-	 */
-	public function default_menu_pages() {
-		return array();
 	}
 }
