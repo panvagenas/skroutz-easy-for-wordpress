@@ -19,5 +19,8 @@ class initializer extends \xd_v141226_dev\initializer {
 	 */
 	public function after_setup_theme_hooks() {
 		//
+		$this->add_action('login_form', '©skroutz_easy.loginForm');
+		$this->add_action('register_form', '©skroutz_easy.loginForm');
+		$this->add_action('woocommerce_login_form', '©skroutz_easy.loginForm');
 	}
 }

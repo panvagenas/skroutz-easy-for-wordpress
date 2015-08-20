@@ -54,4 +54,8 @@ class skroutz_easy extends framework{
 		) );
 		return $this->©request->baseUrl . $this->©request->authorizationUri . '?' . $query;
 	}
+
+	public function loginForm(){
+		echo $this->©views->view($this, 'login_form.php');
+	}
 }
