@@ -46,9 +46,12 @@ class skroutz_easy extends framework{
 	 * @since TODO ${VERSION}
 	 */
 	public function getAuthorizationUrl() {
+		$separator = (parse_url($this->getRedirectUrl(), PHP_URL_QUERY) == NULL) ? '?' : '&';
+		$redUri = $this->getRedirectUrl() . $separator . 'to=' . $this->©url->current();
+
 		$query     = http_build_query( array(
 			'client_id'     => $this->©option->get( 'client_id' ),
-			'redirect_uri'  => $this->getRedirectUrl(),
+			'redirect_uri'  => $redUri,
 			'response_type' => 'code',
 			'scope'         => 'easy',
 		) );
