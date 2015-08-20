@@ -48,12 +48,14 @@ class options extends \xd_v141226_dev\options {
 			'client_id'                                  => '',
 			'client_secret'                              => '',
 			'redirect_uri'                               => 'auth/skroutz',
+			'login_string'                               => $this->__('Login With Skroutz Easy'),
 		);
 
 		$skroutzDefaultsValidators = array(
 			'client_id'     => array( 'string:!empty' ),
 			'client_secret' => array( 'string:!empty' ),
 			'redirect_uri'  => array( 'string:!empty' ),
+			'login_string'  => array( 'string' ),
 		);
 
 		$defaults   = array_merge( $defaults, $skroutzDefaults );

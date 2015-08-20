@@ -83,4 +83,26 @@ if ( ! defined( 'WPINC' ) ) {
 			?>
 		</div>
 	</div>
+
+	<div class="form-group row">
+		<label for="xml-generate-var" class="col-md-3 control-label">
+			<?php echo $this->__( 'Login Button Label' ); ?>
+		</label>
+
+		<div class="col-sm-7">
+			<?php
+			$inputOptions = array(
+				'type'        => 'text',
+				'name'        => '[login_string]',
+				'title'       => $this->__( 'Login Button Label' ),
+				'placeholder' => $this->__( 'Enter your client secret' ),
+				'required'    => true,
+				'id'          => 'login-string',
+				'attrs'       => '',
+				'classes'     => 'form-control col-md-10'
+			);
+			echo $callee->menu_page->option_form_fields->markup( $this->©option->get( 'login_string' ), $inputOptions );
+			?>
+		</div>
+	</div>
 </div>

@@ -16,5 +16,5 @@ if ( ! defined( 'WPINC' ) ) {
 ?>
 
 <p>
-	<button class="btn-ske">Login With Skroutz Easy</button>
+	<button class="btn-ske"><?php echo $this->©options->get('login_string'); ?></button>
 </p>
