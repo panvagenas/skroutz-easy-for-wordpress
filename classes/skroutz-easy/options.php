@@ -55,7 +55,7 @@ class options extends \xd_v141226_dev\options {
 			'client_id'     => array( 'string:!empty' ),
 			'client_secret' => array( 'string:!empty' ),
 			'redirect_uri'  => array( 'string:!empty' ),
-			'login_string'  => array( 'string' ),
+			'login_string'  => array( 'string:!empty' ),
 		);
 
 		$defaults   = array_merge( $defaults, $skroutzDefaults );

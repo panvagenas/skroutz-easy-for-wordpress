@@ -96,7 +96,7 @@ if ( ! defined( 'WPINC' ) ) {
 				'name'        => '[login_string]',
 				'title'       => $this->__( 'Login Button Label' ),
 				'placeholder' => $this->__( 'Enter your client secret' ),
-				'required'    => false,
+				'required'    => true,
 				'id'          => 'login-string',
 				'attrs'       => '',
 				'classes'     => 'form-control col-md-10'
