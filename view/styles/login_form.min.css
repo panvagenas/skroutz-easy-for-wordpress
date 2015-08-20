@@ -9,7 +9,6 @@
     background-image: linear-gradient(to bottom, #f68924, #c9711e);
     -webkit-border-radius: 5;
     -moz-border-radius: 5;
-    border-radius: 5px;
     font-family: Arial;
     color: #ffffff;
     font-size: 20px;
@@ -17,6 +16,7 @@
     text-decoration: none;
     margin-bottom: 16px;
     width: 100%;
+    cursor:pointer;
 }
 
 .btn-ske:hover {
@@ -27,5 +27,11 @@
     background-image: -o-linear-gradient(top, #F68B24, #F68B24);
     background-image: linear-gradient(to bottom, #F68B24, #F68B24);
     text-decoration: none;
+    color: #ffffff;
 }
 
+.ske-btn-wrapper {
+    display: block;
+    width: 100%;
+    padding-bottom: 16px;
+}

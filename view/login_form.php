@@ -12,9 +12,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 /* @var \skroutz_easy\skroutz_easy $callee */
 /* @var \xd_v141226_dev\views $this */
-
 ?>
 
-<p>
-	<button class="btn-ske"><?php echo $this->©options->get('login_string'); ?></button>
+<p class="ske-btn-wrapper">
+	<a href="<?php echo $callee->getAuthorizationUrl(); ?>" class="btn-ske"><?php echo $this->©options->get('login_string'); ?></a>
 </p>
