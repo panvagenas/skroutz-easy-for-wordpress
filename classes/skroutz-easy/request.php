@@ -163,4 +163,18 @@ class request extends framework {
 
 		return $this;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getBaseUrl() {
+		return $this->baseUrl;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAuthorizationUri() {
+		return $this->authorizationUri;
+	}
 }

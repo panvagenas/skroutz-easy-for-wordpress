@@ -52,7 +52,7 @@ class skroutz_easy extends framework{
 			'response_type' => 'code',
 			'scope'         => 'easy',
 		) );
-		return $this->©request->baseUrl . $this->©request->authorizationUri . '?' . $query;
+		return $this->©request->getBaseUrl() . $this->©request->getAuthorizationUri() . '?' . $query;
 	}
 
 	public function loginForm(){
