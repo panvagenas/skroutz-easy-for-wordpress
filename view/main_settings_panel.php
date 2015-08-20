@@ -16,4 +16,71 @@ if ( ! defined( 'WPINC' ) ) {
 /* @var \skroutz_easy\menu_pages\panels\main_settings $callee */
 /* @var \xd_v141226_dev\views $this */
 
-echo 'main settings';
+?>
+<div class="form-horizontal main-settings-form-wrapper" role="form">
+	<div class="form-group row">
+		<label for="xml-generate-var" class="col-md-3 control-label">
+			<?php echo $this->__( 'Client ID' ); ?>
+		</label>
+
+		<div class="col-sm-7">
+			<?php
+			$inputOptions = array(
+				'type'        => 'text',
+				'name'        => '[client_id]',
+				'title'       => $this->__( 'Client ID' ),
+				'placeholder' => $this->__( 'Enter your client ID' ),
+				'required'    => true,
+				'id'          => 'client-id',
+				'attrs'       => '',
+				'classes'     => 'form-control col-md-10'
+			);
+			echo $callee->menu_page->option_form_fields->markup( $this->©option->get( 'client_id' ), $inputOptions );
+			?>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label for="xml-generate-var" class="col-md-3 control-label">
+			<?php echo $this->__( 'Client Secret' ); ?>
+		</label>
+
+		<div class="col-sm-7">
+			<?php
+			$inputOptions = array(
+				'type'        => 'text',
+				'name'        => '[client_secret]',
+				'title'       => $this->__( 'Client Secret' ),
+				'placeholder' => $this->__( 'Enter your client secret' ),
+				'required'    => true,
+				'id'          => 'client-secret',
+				'attrs'       => '',
+				'classes'     => 'form-control col-md-10'
+			);
+			echo $callee->menu_page->option_form_fields->markup( $this->©option->get( 'client_secret' ), $inputOptions );
+			?>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<label for="xml-generate-var" class="col-md-3 control-label">
+			<?php echo $this->__( 'Redirect URI' ); ?>
+		</label>
+		<div class="col-sm-7 input-group" style="padding-left: 15px; padding-right: 15px;">
+			<span class="input-group-addon"><?php echo $this->©url->to_wp_home_uri(); ?></span>
+			<?php
+			$inputOptions = array(
+				'type'        => 'text',
+				'name'        => '[redirect_uri]',
+				'title'       => $this->__( 'Redirect URI' ),
+				'placeholder' => $this->__( 'Enter your redirect URI' ),
+				'required'    => true,
+				'id'          => 'redirect-uri',
+				'attrs'       => '',
+				'classes'     => 'form-control col-md-10'
+			);
+			echo $callee->menu_page->option_form_fields->markup( $this->©option->get( 'redirect_uri' ), $inputOptions );
+			?>
+		</div>
+	</div>
+</div>

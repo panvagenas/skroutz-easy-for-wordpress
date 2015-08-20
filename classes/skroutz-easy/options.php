@@ -46,13 +46,13 @@ class options extends \xd_v141226_dev\options {
 			'menu_pages.panels.news_kb.feed_url'         => '',
 			'menu_pages.panels.videos.yt_playlist'       => '',
 			'client_id'                                  => '',
-			'client-secret'                              => '',
+			'client_secret'                              => '',
 			'redirect_uri'                               => 'auth/skroutz',
 		);
 
 		$skroutzDefaultsValidators = array(
 			'client_id'     => array( 'string:!empty' ),
-			'client-secret' => array( 'string:!empty' ),
+			'client_secret' => array( 'string:!empty' ),
 			'redirect_uri'  => array( 'string:!empty' ),
 		);
 
