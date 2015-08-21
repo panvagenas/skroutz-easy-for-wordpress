@@ -86,11 +86,22 @@ class request extends framework {
 	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
 	 * @since TODO ${VERSION}
 	 */
-	public function getAddress( $accessToken ) {
+	protected function _getAddress( $accessToken ) {
 		$this->reset();
 		$this->url = $this->baseUrl . $this->addressUri . '?oauth_token=' . urlencode( $accessToken );
 
-		return $this->makeCall();
+		$res = $this->makeCall();
+		return isset($res->email) ? $res : null;
+	}
+
+	/**
+	 * @param $code
+	 *
+	 * @return array|mixed
+	 */
+	public function getAddress($code){
+		$accessToken = $this->getAccessToken($code);
+		return isset($accessToken->access_token) ? $this->_getAddress($accessToken->access_token) : null;
 	}
 
 	/**

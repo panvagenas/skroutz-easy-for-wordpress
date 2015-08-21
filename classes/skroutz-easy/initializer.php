@@ -14,6 +14,7 @@ namespace skroutz_easy;
 
 /**
  * @property skroutz_easy ©skroutz_easy
+ * @property urls ©url
  */
 class initializer extends \xd_v141226_dev\initializer {
 	/**
