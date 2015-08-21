@@ -19,7 +19,7 @@ if ( ! defined( 'WPINC' ) ) {
 ?>
 <div class="form-horizontal main-settings-form-wrapper" role="form">
 	<div class="form-group row">
-		<label for="xml-generate-var" class="col-md-3 control-label">
+		<label for="client-id" class="col-md-3 control-label">
 			<?php echo $this->__( 'Client ID' ); ?>
 		</label>
 
@@ -41,7 +41,7 @@ if ( ! defined( 'WPINC' ) ) {
 	</div>
 
 	<div class="form-group row">
-		<label for="xml-generate-var" class="col-md-3 control-label">
+		<label for="client-secret" class="col-md-3 control-label">
 			<?php echo $this->__( 'Client Secret' ); ?>
 		</label>
 
@@ -63,7 +63,7 @@ if ( ! defined( 'WPINC' ) ) {
 	</div>
 
 	<div class="form-group row">
-		<label for="xml-generate-var" class="col-md-3 control-label">
+		<label for="redirect-uri" class="col-md-3 control-label">
 			<?php echo $this->__( 'Redirect URI' ); ?>
 		</label>
 		<div class="col-sm-7 input-group" style="padding-left: 15px; padding-right: 15px;">
@@ -85,7 +85,7 @@ if ( ! defined( 'WPINC' ) ) {
 	</div>
 
 	<div class="form-group row">
-		<label for="xml-generate-var" class="col-md-3 control-label">
+		<label for="login-string" class="col-md-3 control-label">
 			<?php echo $this->__( 'Login Button Label' ); ?>
 		</label>
 

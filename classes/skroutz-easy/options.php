@@ -16,6 +16,36 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 class options extends \xd_v141226_dev\options {
+	public $mapFields = array(
+		'map_first_name'                             => 'billing_first_name',
+		'map_last_name'                              => 'billing_last_name',
+		'map_email'                                  => 'billing_email',
+		'map_mobile'                                 => 'billing_phone',
+		'map_phone'                                  => '',
+		'map_address'                                => 'billing_address_1',
+		'map_zip'                                    => 'billing_postcode',
+		'map_city'                                   => 'billing_city',
+		'map_region'                                 => 'billing_state',
+		'map_street_name'                            => '',
+		'map_street_number'                          => '',
+		'map_invoice'                                => '',
+		'map_company'                                => 'billing_company',
+		'map_doy'                                    => '',
+		'map_afm'                                    => '',
+		'map_profession'                             => '',
+		'map_company_phone'                          => '',
+		'map_shipping_address_first_name'            => 'shipping_first_name',
+		'map_shipping_address_last_name'             => 'shipping_last_name',
+		'map_shipping_address_mobile'                => '',
+		'map_shipping_address_phone'                 => '',
+		'map_shipping_address_address'               => 'shipping_address_1',
+		'map_shipping_address_zip'                   => 'shipping_postcode',
+		'map_shipping_address_city'                  => 'shipping_city',
+		'map_shipping_address_region'                => 'shipping_state',
+		'map_shipping_address_street_name'           => '',
+		'map_shipping_address_street_number'         => '',
+	);
+
 	/**
 	 * Sets up default options and validators.
 	 *
@@ -48,17 +78,22 @@ class options extends \xd_v141226_dev\options {
 			'client_id'                                  => '',
 			'client_secret'                              => '',
 			'redirect_uri'                               => 'auth/skroutz',
-			'login_string'                               => $this->__('Login With Skroutz Account'),
+			'login_string'                               => $this->__( 'Login With Skroutz Account' ),
 		);
 
 		$skroutzDefaultsValidators = array(
-			'client_id'     => array( 'string:!empty' ),
-			'client_secret' => array( 'string:!empty' ),
-			'redirect_uri'  => array( 'string:!empty' ),
-			'login_string'  => array( 'string:!empty' ),
+			'client_id'                          => array( 'string:!empty' ),
+			'client_secret'                      => array( 'string:!empty' ),
+			'redirect_uri'                       => array( 'string:!empty' ),
+			'login_string'                       => array( 'string:!empty' ),
 		);
 
-		$defaults   = array_merge( $defaults, $skroutzDefaults );
+		foreach ( $this->mapFields as $fieldName => $fieldValue ) {
+			$skroutzDefaultsValidators[$fieldName] = array( 'string' );
+		}
+
+
+		$defaults   = array_merge( $defaults, $skroutzDefaults, $this->mapFields );
 		$validators = array_merge( $validators, $skroutzDefaultsValidators );
 
 		$this->_setup( $defaults, $validators );
