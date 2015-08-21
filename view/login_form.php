@@ -15,5 +15,5 @@ if ( ! defined( 'WPINC' ) ) {
 ?>
 
 <p class="ske-btn-wrapper">
-	<a href="<?php echo $callee->getAuthorizationUrl(); ?>" class="btn-ske"><?php echo $this->©options->get('login_string'); ?></a>
+	<a href="<?php echo $callee->©url->getAuthorizationUrl(); ?>" class="btn-ske"><?php echo $this->©options->get('login_string'); ?></a>
 </p>

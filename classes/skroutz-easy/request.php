@@ -146,7 +146,7 @@ class request extends framework {
 	 * @since TODO ${VERSION}
 	 */
 	public function getRedirectUrl() {
-		return $this->©skroutz_easy->getRedirectUrl();
+		return $this->©url->getRedirectUrl();
 	}
 
 	/**

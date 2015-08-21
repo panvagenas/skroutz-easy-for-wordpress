@@ -27,6 +27,11 @@ require_once dirname( dirname( dirname( __FILE__ ) ) ) . '/core/stub.php';
  *
  * @property request $©request
  * @method request ©request()
+ *
+ * @property urls                                     $©urls
+ * @property urls                                     $©url
+ * @method urls                                       ©urls()
+ * @method urls                                       ©url()
  */
 class framework extends \xd__framework {
 }

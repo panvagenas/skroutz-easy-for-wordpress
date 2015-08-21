@@ -15,6 +15,10 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+/**
+ * Class skroutz_easy
+ * @package skroutz_easy
+ */
 class skroutz_easy extends framework{
 	protected $redirect_uri;
 
@@ -29,36 +33,18 @@ class skroutz_easy extends framework{
 		$this->redirect_uri  = $this->©option->get( 'redirect_uri' );
 	}
 
-	/**
-	 * @return string
-	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-	 * @since TODO ${VERSION}
-	 */
-	public function getRedirectUrl(){
-		return $this->©url->to_wp_site_uri($this->redirect_uri);
-	}
-
-
-	/**
-	 * @return string
-	 * @throws \xd_v141226_dev\exception
-	 * @author Panagiotis Vagenas <pan.vagenas@gmail.com>
-	 * @since TODO ${VERSION}
-	 */
-	public function getAuthorizationUrl() {
-		$separator = (parse_url($this->getRedirectUrl(), PHP_URL_QUERY) == NULL) ? '?' : '&';
-		$redUri = $this->getRedirectUrl() . $separator . 'to=' . $this->©url->current();
-
-		$query     = http_build_query( array(
-			'client_id'     => $this->©option->get( 'client_id' ),
-			'redirect_uri'  => $redUri,
-			'response_type' => 'code',
-			'scope'         => 'easy',
-		) );
-		return $this->©request->getBaseUrl() . $this->©request->getAuthorizationUri() . '?' . $query;
+	public function callback(){
+		var_dump(1);die;
 	}
 
 	public function loginForm(){
 		echo $this->©views->view($this, 'login_form.php');
+	}
+
+	/**
+	 * @return array|string
+	 */
+	public function getRedirectUri() {
+		return $this->redirect_uri;
 	}
 }
