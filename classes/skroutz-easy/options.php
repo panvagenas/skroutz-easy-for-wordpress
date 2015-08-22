@@ -17,33 +17,33 @@ if ( ! defined( 'WPINC' ) ) {
 
 class options extends \xd_v141226_dev\options {
 	public $mapFields = array(
-		'map_first_name'                             => 'billing_first_name',
-		'map_last_name'                              => 'billing_last_name',
-		'map_email'                                  => 'billing_email',
-		'map_mobile'                                 => 'billing_phone',
-		'map_phone'                                  => '',
-		'map_address'                                => 'billing_address_1',
-		'map_zip'                                    => 'billing_postcode',
-		'map_city'                                   => 'billing_city',
-		'map_region'                                 => 'billing_state',
-		'map_street_name'                            => '',
-		'map_street_number'                          => '',
-		'map_invoice'                                => '',
-		'map_company'                                => 'billing_company',
-		'map_doy'                                    => '',
-		'map_afm'                                    => '',
-		'map_profession'                             => '',
-		'map_company_phone'                          => '',
-		'map_shipping_address_first_name'            => 'shipping_first_name',
-		'map_shipping_address_last_name'             => 'shipping_last_name',
-		'map_shipping_address_mobile'                => '',
-		'map_shipping_address_phone'                 => '',
-		'map_shipping_address_address'               => 'shipping_address_1',
-		'map_shipping_address_zip'                   => 'shipping_postcode',
-		'map_shipping_address_city'                  => 'shipping_city',
-		'map_shipping_address_region'                => 'shipping_state',
-		'map_shipping_address_street_name'           => '',
-		'map_shipping_address_street_number'         => '',
+		'map_first_name'                     => 'billing_first_name',
+		'map_last_name'                      => 'billing_last_name',
+		'map_email'                          => 'billing_email',
+		'map_mobile'                         => 'billing_phone',
+		'map_phone'                          => '',
+		'map_address'                        => 'billing_address_1',
+		'map_zip'                            => 'billing_postcode',
+		'map_city'                           => 'billing_city',
+		'map_region'                         => 'billing_state',
+		'map_street_name'                    => '',
+		'map_street_number'                  => '',
+		'map_invoice'                        => '',
+		'map_company'                        => 'billing_company',
+		'map_doy'                            => '',
+		'map_afm'                            => '',
+		'map_profession'                     => '',
+		'map_company_phone'                  => '',
+		'map_shipping_address_first_name'    => 'shipping_first_name',
+		'map_shipping_address_last_name'     => 'shipping_last_name',
+		'map_shipping_address_mobile'        => '',
+		'map_shipping_address_phone'         => '',
+		'map_shipping_address_address'       => 'shipping_address_1',
+		'map_shipping_address_zip'           => 'shipping_postcode',
+		'map_shipping_address_city'          => 'shipping_city',
+		'map_shipping_address_region'        => 'shipping_state',
+		'map_shipping_address_street_name'   => '',
+		'map_shipping_address_street_number' => '',
 	);
 
 	/**
@@ -82,14 +82,14 @@ class options extends \xd_v141226_dev\options {
 		);
 
 		$skroutzDefaultsValidators = array(
-			'client_id'                          => array( 'string:!empty' ),
-			'client_secret'                      => array( 'string:!empty' ),
-			'redirect_uri'                       => array( 'string:!empty' ),
-			'login_string'                       => array( 'string:!empty' ),
+			'client_id'     => array( 'string:!empty' ),
+			'client_secret' => array( 'string:!empty' ),
+			'redirect_uri'  => array( 'string:!empty' ),
+			'login_string'  => array( 'string:!empty' ),
 		);
 
 		foreach ( $this->mapFields as $fieldName => $fieldValue ) {
-			$skroutzDefaultsValidators[$fieldName] = array( 'string' );
+			$skroutzDefaultsValidators[ $fieldName ] = array( 'string' );
 		}
 
 
@@ -103,10 +103,11 @@ class options extends \xd_v141226_dev\options {
 	 * @return bool
 	 * @throws \xd_v141226_dev\exception
 	 */
-	public function hasAppCredentials(){
-		$cId = $this->get('client_id');
-		$cSe = $this->get('client_secret');
-		$cRe = $this->get('redirect_uri');
-		return $this->©vars->are_not_empty($cId, $cRe, $cSe);
+	public function hasAppCredentials() {
+		$cId = $this->get( 'client_id' );
+		$cSe = $this->get( 'client_secret' );
+		$cRe = $this->get( 'redirect_uri' );
+
+		return $this->©vars->are_not_empty( $cId, $cRe, $cSe );
 	}
 }

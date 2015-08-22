@@ -53,10 +53,7 @@ class skroutz_easy extends framework{
 			if($userInfo && isset($userInfo->email)){
 				$user = $this->©user(null, 'email', $userInfo->email);
 
-				if($user->has_id()) {
-					// existing user
-					// TODO maybe update some fields
-				} else {
+				if(!$user->has_id()) {
 					// new user
 					$password = wp_generate_password();
 
@@ -79,8 +76,10 @@ class skroutz_easy extends framework{
 					$user = $this->©user( $user_id );
 					$user->wp->set_role( 'customer' );
 
-					// TODO Email the user
+					// TODO Email the user (username and pass)
 				}
+
+				$user->updateCustomerMeta($this->©array->ify_deep($userInfo));
 
 				// login user
 				wp_set_current_user( $user->ID, $user->wp->user_login );

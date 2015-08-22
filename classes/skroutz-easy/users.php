@@ -11,29 +11,47 @@ namespace skroutz_easy;
 
 class users extends \xd_v141226_dev\users{
 	/**
-	 * @param \stdClass $userInfo
-	 * @param \xd_v141226_dev\users $user
+	 * @param array $userInfo
+	 * @param string $optionPrefix
 	 *
-	 * @return \xd_v141226_dev\users
+	 * @return $this|null
 	 * @throws \xd_v141226_dev\exception
 	 */
-	public function updateCustomerMeta(\stdClass $userInfo, \xd_v141226_dev\users $user){
-		foreach ( $this->©option->mapFields as $fieldName => $defaultValue ) {
-			if(!isset($userInfo->{$fieldName})){
+	public function updateCustomerMeta(Array $userInfo, $optionPrefix = 'map_'){
+		if(!$this->has_id()){
+			return null;
+		}
+
+		foreach ( $userInfo as $skroutzFieldName => $skroutzFieldValue ) {
+			if(empty($skroutzFieldValue)){
 				continue;
 			}
-			$fieldValue = $this->©option->get($fieldName);
-			$fieldValue = trim($fieldValue);
-			$userMetaKeysToUpdate = explode(',', $fieldValue);
+
+			$optionName = $optionPrefix . $skroutzFieldName;
+
+			if(is_array($skroutzFieldValue)){
+				$this->updateCustomerMeta($skroutzFieldValue, $optionName . '_');
+				continue;
+			}
+
+			if(!array_key_exists($optionName, $this->©option->mapFields)){
+				continue;
+			}
+
+			$metaKeys = $this->©option->get($optionName);
+			$metaKeys = trim($metaKeys);
+
+			$userMetaKeysToUpdate = explode(',', $metaKeys);
+
 			if($userMetaKeysToUpdate){
 				foreach ( $userMetaKeysToUpdate as $metaKey ) {
 					$metaKey = trim($metaKey);
 					if(!empty($metaKey)){
-						$user->update_meta($metaKey, $userInfo->{$fieldName});
+						$this->update_meta($metaKey, $skroutzFieldValue);
 					}
 				}
 			}
 		}
-		return $user;
+		return $this;
 	}
 }
