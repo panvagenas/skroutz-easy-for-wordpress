@@ -50,25 +50,50 @@ class skroutz_easy extends framework{
 		} else {
 			// we have a code
 			$userInfo = $this->©request->getAddress($code);
-			// TODO implement
-			if($userInfo){
-				// success
+			if($userInfo && isset($userInfo->email)){
 				$user = $this->©user(null, 'email', $userInfo->email);
-				if($user->ID){
+
+				if($user->has_id()) {
 					// existing user
-					wp_set_current_user( $user->ID, $user->user_login );
-					wp_set_auth_cookie( $user->ID );
-					do_action( 'wp_login', $user->user_login );
+					// TODO maybe update some fields
 				} else {
 					// new user
+					$password = wp_generate_password();
+
+					$user_id = wp_create_user( $userInfo->email, $password, $userInfo->email );
+
+					$updateUserParams = array(
+						'ID'          =>    $user_id,
+						'nickname'    =>    $userInfo->email,
+					);
+
+					if(isset($userInfo->first_name, $userInfo->last_name)){
+						$updateUserParams['display_name'] = $userInfo->first_name . ' ' . $userInfo->last_name;
+						$updateUserParams['first_name'] = $userInfo->first_name;
+						$updateUserParams['last_name'] = $userInfo->last_name;
+					}
+
+					wp_update_user($updateUserParams);
+
+					// Set the role
+					$user = $this->©user( $user_id );
+					$user->wp->set_role( 'customer' );
+
+					// TODO Email the user
 				}
+
+				// login user
+				wp_set_current_user( $user->ID, $user->wp->user_login );
+				wp_set_auth_cookie( $user->ID );
+				do_action( 'wp_login', $user->wp->user_login );
 			} else {
-				// failure
+				// fail to get address
 				// TODO do some error reporting before redirection ???
 			}
 		}
 
 		// need to redirect now
+		// FIXME not properly redirect if $to is wp-login
 		if(!empty($to)){
 			wp_safe_redirect($to);
 		} else {
