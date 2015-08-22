@@ -22,6 +22,9 @@ class initializer extends \xd_v141226_dev\initializer {
 	 * @since TODO ${VERSION}
 	 */
 	public function after_setup_theme_hooks() {
+		if(!$this->©option->hasAppCredentials()){
+			return;
+		}
 		// form buttons
 		$this->add_action('login_form', '©skroutz_easy.loginForm');
 		$this->add_action('register_form', '©skroutz_easy.loginForm');
