@@ -98,4 +98,15 @@ class options extends \xd_v141226_dev\options {
 
 		$this->_setup( $defaults, $validators );
 	}
+
+	/**
+	 * @return bool
+	 * @throws \xd_v141226_dev\exception
+	 */
+	public function hasAppCredentials(){
+		$cId = $this->get('client_id');
+		$cSe = $this->get('client_secret');
+		$cRe = $this->get('redirect_uri');
+		return $this->©vars->are_not_empty($cId, $cRe, $cSe);
+	}
 }
